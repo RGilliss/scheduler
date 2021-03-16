@@ -109,7 +109,7 @@ storiesOf("InterviewerListItem", module)
       id={interviewer.id}
       name={interviewer.name}
       avatar={interviewer.avatar}
-      setInterviewer={action("setInterviewer")}
+      setInterviewer={event => action("setInterviewer")(interviewer.id)}
     />
   ));
 
@@ -124,6 +124,7 @@ storiesOf("InterviewerListItem", module)
     { id: 4, name: "Cohana Roy", avatar: "https://i.imgur.com/FK8V841.jpg" },
     { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
   ];
+
   
   storiesOf("InterviewerList", module)
     .addParameters({

@@ -9,14 +9,13 @@ export default function DayListItem(props) {
   });
 
   const formatSpots = (spots) => {
-    if (spots === 0) {
-      return "no spots"
-    }
-    if (spots === 1) {
-      return `${spots} spot`
-    }
-    if (spots > 1) {
-      return `${spots} spots`
+    switch (spots) {
+      case 0:
+        return "no spots";
+      case 1:
+        return `${spots} spot`;
+      default:
+      return `${spots} spots`;
     }
   }
 
