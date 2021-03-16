@@ -14,7 +14,9 @@ export default function Button(props) {
   }
 
   return (
-    <li className={interviewerClass}>
+    <li
+    onClick={() => props.setInterviewer(props.id)} 
+    className={interviewerClass}>
       <img
         className="interviewers__item-image"
         src="https://i.imgur.com/LpaY82x.png"
