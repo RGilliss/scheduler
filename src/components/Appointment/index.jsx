@@ -6,7 +6,7 @@ import Header from "components/Appointment/Header"
 
 
 export default function Appointment(props) {
-  
+  console.log("Props", props)
   return (
    <article className="appointment">
      <Header time={props.time}></Header>
