@@ -5,6 +5,7 @@ import Empty from "components/Appointment/Empty";
 import Header from "components/Appointment/Header"
 import Form from "./Form";
 import useVisualMode from "../../hooks/useVisualMode"
+import { getInterviewersForDay } from "helpers/selectors";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
@@ -33,6 +34,7 @@ export default function Appointment(props) {
     <Form
     //  name={name}
     //  value={name}
+    interviewers={props.interviewers}
      type="text"
      placeholder="Enter Student Name"
     //  onChange={(event) => setName(event.target.value)}
