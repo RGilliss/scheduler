@@ -13,7 +13,7 @@ export default function Form(props) {
     reset()
     props.onCancel()
   }
-  console.log("formProps",props)
+  
    return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -24,7 +24,7 @@ export default function Form(props) {
             value={name}
             type="text"
             placeholder="Enter Student Name"
-            onChange={(event) => setName(event.target.value)}
+            onChange={event => setName(event.target.value)}
             onSubmit={event => event.preventDefault()}
           />
         </form>
