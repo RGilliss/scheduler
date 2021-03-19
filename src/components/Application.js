@@ -3,10 +3,11 @@ import DayList from "components/DayList";
 import "components/Application.scss";
 import Appointment from "components/Appointment/index";
 import axios from "axios";
-import {getAppointmentsForDay, getInterview} from "../helpers/selectors"
+import {getAppointmentsForDay, getInterview} from "../helpers/selectors";
+// import useVisualMode from "../hooks/useVisualMode"
 
 
-export default function Application() {
+export default function Application(props) {
   const setDay = day => setState({ ...state, day });
   const setDays = days => setState(prev => ({ ...prev, days}));
 
@@ -29,6 +30,8 @@ export default function Application() {
         interviewers: state[2].data}))
     })
   }, []);
+
+ 
   
   const appointments = getAppointmentsForDay(state, state.day);
 
