@@ -31,7 +31,6 @@ export function getInterviewersForDay(state, day) {
   let ints = []
   for (const days of state.days) {
     if (days.name === day) {
-      console.log(days.interviewers)
       for (const id of days.interviewers) {
         ints.push(state.interviewers[id])
       }
