@@ -10,6 +10,7 @@ export default function useApplicationData() {
     appointments: {},
     interviewers: {},
   });
+  
 
   useEffect(() => {
     Promise.all([
@@ -26,10 +27,33 @@ export default function useApplicationData() {
         }));
       })
       .catch((err) => err.message);
-  }, [state]);
+  }, []);
+
+
+const updateSpots = function (day, appointments) {
+  let spots = 0;
+  
+  for (const id of day.appointments) {
+    const appointment = appointments[id];
+    if (!appointment.interview) {
+      spots++
+    }
+  }
+  
+  return spots
+};
+
+const setUpdateSpots = function (days, appointments) {
+  const arr = days.map((day) => ({
+    ...day,
+    spots: updateSpots(day, appointments)
+  }))
+  return arr;
+}
 
   function bookInterview(id, interview) {
     return axios.put(`/api/appointments/${id}`, { interview }).then(() => {
+    
       const appointment = {
         ...state.appointments[id],
         interview: { ...interview },
@@ -38,7 +62,10 @@ export default function useApplicationData() {
         ...state.appointments,
         [id]: appointment,
       };
-      setState({ ...state, appointments });
+     
+      setState({ ...state, appointments, days: setUpdateSpots(state.days, appointments) });
+      
+   
     });
   }
 
@@ -49,7 +76,7 @@ export default function useApplicationData() {
         ...state.appointments,
         [id]: appointment,
       };
-      setState({ ...state, appointments });
+      setState({ ...state, appointments, days: setUpdateSpots(state.days, appointments) });
     });
   }
 
