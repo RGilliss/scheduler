@@ -1,5 +1,5 @@
 # Interview Scheduler
-
+  A modern scheduling application using React.
 ## Setup
 
 Install dependencies with `npm install`.

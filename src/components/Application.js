@@ -2,22 +2,25 @@ import React from "react";
 import DayList from "components/DayList";
 import "components/Application.scss";
 import Appointment from "components/Appointment/index";
-import {getAppointmentsForDay, getInterview, getInterviewersForDay} from "../helpers/selectors";
-import useApplicationData from "../hooks/useApplicationData"
-
+import useApplicationData from "../hooks/useApplicationData";
+import {
+  getAppointmentsForDay,
+  getInterview,
+  getInterviewersForDay,
+} from "../helpers/selectors";
 
 export default function Application() {
   const {
     state,
     setDay,
     bookInterview,
-    cancelInterview
+    cancelInterview,
   } = useApplicationData();
 
   const interviewers = getInterviewersForDay(state, state.day);
 
   const appointments = getAppointmentsForDay(state, state.day).map(
-    appointment => {
+    (appointment) => {
       return (
         <Appointment
           key={appointment.id}
@@ -26,10 +29,10 @@ export default function Application() {
           interviewers={interviewers}
           bookInterview={bookInterview}
           cancelInterview={cancelInterview}
-          />
+        />
       );
     }
-    );
+  );
 
   return (
     <main className="layout">
@@ -38,7 +41,7 @@ export default function Application() {
           className="sidebar--centered"
           src="images/logo.png"
           alt="Interview Scheduler"
-          />
+        />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
           <DayList days={state.days} day={state.day} setDay={setDay} />
@@ -47,7 +50,7 @@ export default function Application() {
           className="sidebar__lhl sidebar--centered"
           src="images/lhl.png"
           alt="Lighthouse Labs"
-          />
+        />
       </section>
       <section className="schedule">
         <section className="schedule">
