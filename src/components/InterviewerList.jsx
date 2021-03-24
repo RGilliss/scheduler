@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 
 
 function InterviewerList(props) {
-  console.log("IVL", props)
   const interviewerList = props.interviewers.map((interviewer) => {
     return (
       <InterviewerListItem

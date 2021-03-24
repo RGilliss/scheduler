@@ -80,11 +80,17 @@ export default {
       }
     }
   }),
-  put: jest.fn(url => {
-      console.log("URL", url)
+  put: jest.fn(() => {
     return Promise.resolve({
       status: 204,
       statusText: "No Content",
+      data: fixtures.appointments
+    })
+  }),
+  delete: jest.fn(() => {
+    return Promise.resolve({
+      status: 204,
+      statusText: "OK",
       data: fixtures.appointments
     })
   })
