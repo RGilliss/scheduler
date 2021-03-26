@@ -8,7 +8,6 @@ import Confirm from "components/Appointment/Confirm";
 import Error from "components/Appointment/Error";
 import Form from "./Form";
 import useVisualMode from "../../hooks/useVisualMode";
-// import { getInterviewersForDay } from "helpers/selectors";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
@@ -78,6 +77,7 @@ export default function Appointment(props) {
           onSubmit={(event) => event.preventDefault()}
           onCancel={() => back()}
           onSave={save}
+          interviewer={props.interview.interviewer.id}
         />
       )}
       {mode === CONFIRM && (
